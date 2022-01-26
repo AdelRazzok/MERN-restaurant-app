@@ -1,7 +1,6 @@
 import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import RestaurantsList from './components/restaurants-list'
 import Restaurants from './components/restaurants'
 import Login from './components/login'
@@ -24,7 +23,7 @@ function App() {
 				<a href='/restaurants' className='navbar-brand'>
 					Restaurant Reviews
 				</a>
-				<div className='nav-bar mr-auto'>
+				<div className='navbar-nav mr-auto'>
 					<li className='nav-item'>
 						<Link to='/restaurants' className='nav-link'>
 							Restaurants
@@ -44,18 +43,9 @@ function App() {
 				<Routes>
 					<Route path='/' element={<RestaurantsList />} />
 					<Route path='/restaurants' element={<RestaurantsList />} />
-					<Route
-						path='/restaurants/:id/review'
-						render={props => <AddReview {...props} user={user} />}
-					/>
-					<Route
-						path='/restaurants/:id'
-						render={props => <Restaurants {...props} user={user} />}
-					/>
-					<Route
-						path='/login'
-						render={props => <Login {...props} login={login} />}
-					/>
+					<Route path='/restaurants/:id' element={<Restaurants user={user} />} />
+					<Route path='/restaurants/:id/review' element={<AddReview user={user} />} />
+					<Route path='/login' element={<Login login={login} />} />
 				</Routes>
 			</div>
 
